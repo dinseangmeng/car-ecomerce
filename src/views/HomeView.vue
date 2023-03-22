@@ -2,6 +2,8 @@
   <main>
     <div class="layer1">
       <HeaderNav color="white" HightLight="rgba(202, 202, 202,.7)"/>
+      <br>
+      <br>
       <div class="container">
         <div class="col1">
           <div class="text">
@@ -331,7 +333,7 @@
     </div>
     <RouterLink :to="{name:'collection'}">see more</RouterLink>
     
-<br>
+    <br>
   </main>
   
 </template>
@@ -364,10 +366,17 @@ main{
       width: 100%;
       display: flex;
       justify-content: space-between;
+      
       // justify-content: center;
       align-items: center;
+      @media only screen and (max-width: 1350px){
+        flex-direction: column;
+        
+      }
       .col1{
+        width: 100%;
         height: 100%;
+        flex: 1;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -375,6 +384,10 @@ main{
         gap: 6rem;
         padding-left: 6rem;
         // gap: 1rem;
+        @media only screen and (max-width: 1350px){
+          padding-left: 0;
+          
+        }
         font-family: 'Koulen', cursive;
         .text{
           display: flex;
@@ -390,17 +403,33 @@ main{
             color: #0d7ce4;
             font-size: 2rem;
             transform: translateY(20%);
+            @media only screen and (max-width: 600px){
+              font-size: 1rem;
+              
+            }
           }
           .text-l , .text-r{
             color: #2998d6;
             h1{
               font-size:3rem;
-              
+              @media only screen and (max-width: 600px){
+                font-size: 2rem;
+                
+              }
+              @media only screen and (max-width: 500px){
+                font-size: 1.7rem;
+                
+              }
             }
             p{
               font-size: 1rem;
+              @media only screen and (max-width: 600px){
+                font-size: .7rem;
+                
+              }
+              
             }
-            line-height: 0;
+            line-height: 1;
           }
         }
         &> a{
@@ -411,6 +440,7 @@ main{
           background-color: #000000;
           border-radius: .5rem;
           transition: 250ms;
+          z-index: 100;
           &:hover{
             background-color: #000000b1;
           }
@@ -418,6 +448,8 @@ main{
         
       }
       .col2{
+        width: 100%;
+        flex: 0;
         img{
           transform: rotateY(180deg);
           scale: 1.3;
@@ -427,8 +459,8 @@ main{
     }
   }
   .collaborate{
-    overflow: hidden;
     width: 100%;
+    overflow: hidden;
     margin-top: .4rem;
     height: 4rem;
     background-color: #005889;
@@ -439,15 +471,20 @@ main{
     img{
       height: 100%;
       object-fit: scale-down;
+      @media only screen and (max-width: 600px){
+        height: unset;
+        width: 100%;
+        
+      }
     }
   }
   .mini_collection{
     // margin-top: 0;
-    max-width: 80%;
+    min-width: 80%;
     height: fit-content;
     display: flex;
     // flex-direction: column;
-    
+
     overflow: hidden;
     gap:2rem;
     background-color: #1b3746;
@@ -461,14 +498,18 @@ main{
       align-items: center;
       
     }
+    @media only screen and (max-width: 600px){
+      width: 100%;
+      
+    }
     .left_cat{
       
-      width: max-content;
+      width: fit-content;
       display: flex;
       flex-direction: column;
       justify-content: center;
       // align-items: center;
-      padding: 1.6rem ;
+      // padding: 1.6rem ;
       background-color: #2d4654;
       gap: .7rem;
       border-radius: .4rem;
@@ -480,6 +521,10 @@ main{
         flex-wrap: wrap;
         align-items: center;
       }
+      @media only screen and (max-width: 600px){
+        justify-content: flex-start;
+      
+    }
       .category{
         display: flex;
         width: max-content;
