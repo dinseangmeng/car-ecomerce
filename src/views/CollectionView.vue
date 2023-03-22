@@ -1,8 +1,8 @@
 <template>
-  <main>
-    <HeaderNav />
-    <h1>Hello this is about page</h1>
-  </main>
+    <main>
+        <HeaderNav />
+<h1>Welcome to collection</h1>
+    </main>
 </template>
 
 <script setup>

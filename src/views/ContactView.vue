@@ -1,8 +1,10 @@
 <template>
-  <main>
-    <HeaderNav />
-    <h1>Hello this is about page</h1>
-  </main>
+    <main>
+
+        <HeaderNav />
+    </main>
+        Contact anytime
+ 
 </template>
 
 <script setup>
