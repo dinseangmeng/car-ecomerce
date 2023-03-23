@@ -509,7 +509,7 @@ main{
       flex-direction: column;
       justify-content: center;
       // align-items: center;
-      // padding: 1.6rem ;
+      padding: 1.6rem ;
       background-color: #2d4654;
       gap: .7rem;
       border-radius: .4rem;
@@ -523,6 +523,7 @@ main{
       }
       @media only screen and (max-width: 600px){
         justify-content: flex-start;
+        padding: unset;
       
     }
       .category{

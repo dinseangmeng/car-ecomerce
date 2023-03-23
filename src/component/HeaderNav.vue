@@ -60,6 +60,7 @@ nav{
         justify-content: space-between;
         align-items: center;
         font-family: 'Koulen', cursive;
+        gap: 4rem;
         @media only screen and (max-width: 800px){
             flex-direction: column;
             
@@ -70,6 +71,7 @@ nav{
             
         }
         .logo{
+            width: 100%;
             a{
                 display: flex;
                 flex-direction: column;
@@ -86,6 +88,7 @@ nav{
             width: 100%;
             display: flex;
             align-items: center;
+            justify-content: center;
             gap: 4rem;
             @media only screen and (max-width: 800px){
                 gap: 1rem;
@@ -95,6 +98,10 @@ nav{
             
             .nav_link{
                 width: 100%;
+                @media only screen and (max-width: 600px){
+                    width: fit-content;
+                     
+                    }
                 a{
                     font-size: 1.7rem;
                     text-decoration: none;
@@ -107,7 +114,7 @@ nav{
                     @media only screen and (max-width: 600px){
                         padding: .1rem .4rem;
                         font-size: 1.4rem;
-                        
+                     
                     }
                     @media only screen and (max-width: 500px){
                         padding: .1rem .4rem;
@@ -121,6 +128,7 @@ nav{
                 }
             }
             .cart{
+                
                 position: relative;
                 svg{
                     --size:2rem;
