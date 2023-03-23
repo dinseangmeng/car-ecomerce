@@ -98,6 +98,9 @@ nav{
             
             .nav_link{
                 width: 100%;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
                 @media only screen and (max-width: 600px){
                     width: fit-content;
                      
