@@ -234,6 +234,7 @@ main{
             color: #2998d6;
             h1{
               font-size:3rem;
+              white-space: nowrap;
               @media only screen and (max-width: 600px){
                 font-size: 2rem;
                 
