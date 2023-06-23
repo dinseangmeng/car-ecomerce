@@ -2,10 +2,13 @@
     <nav>
         <main :style="{'--font-color':color , '--HightLight-color':HightLight}">
             <div class="logo">
-                <RouterLink :to="{name:'home'}">
-                    <img src="../../public/Icon.png" alt="logo">
-                    SMD
-                </RouterLink>
+                <div>
+                    <RouterLink :to="{name:'home'}">
+                        <img src="../../public/Icon.png" alt="logo">
+                        SMD
+                    </RouterLink>
+                    
+                </div>
             </div>
             <div class="menu">
                 <div class="nav_link">
@@ -51,7 +54,7 @@ const prop=defineProps({
 nav{
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     padding: 1rem 0;
     main{
@@ -67,20 +70,28 @@ nav{
             
         }
         @media only screen and (max-width: 500px){
-        width: 90%;
+            width: 90%;
             
         }
         .logo{
             width: 100%;
-            a{
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                text-decoration: none;
-                color: var(--font-color);
-                font-size: 1.3rem;
-                img{
-                    width: 5rem;
+            div{
+                width: fit-content;
+                @media only screen and (max-width: 800px){
+                    width: 100%;
+                    
+                    
+                }
+                a{
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    text-decoration: none;
+                    color: var(--font-color);
+                    font-size: 1.3rem;
+                    img{
+                        width: 5rem;
+                    }
                 }
             }
         }
@@ -103,8 +114,8 @@ nav{
                 gap: 1rem;
                 @media only screen and (max-width: 600px){
                     width: fit-content;
-                     
-                    }
+                    
+                }
                 a{
                     font-size: 1.7rem;
                     text-decoration: none;
@@ -117,7 +128,7 @@ nav{
                     @media only screen and (max-width: 600px){
                         padding: .1rem .4rem;
                         font-size: 1.4rem;
-                     
+                        
                     }
                     @media only screen and (max-width: 500px){
                         padding: .1rem .4rem;

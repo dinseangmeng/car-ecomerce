@@ -13,6 +13,8 @@ import { AppController } from './app.controller';
 import { APP_FILTER } from '@nestjs/core';
 import { NotFoundExceptionFilter } from './Exception/404_Exception';
 // import { Controller } from './..controller';
+import { CarTypeModule } from './car_type/car-type.module';
+import { CarsModule } from './cars/cars.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -22,7 +24,7 @@ import { NotFoundExceptionFilter } from './Exception/404_Exception';
       dest:'/file'
     }),
     AuthModule, 
-    PrismaModule, UserModule,UserModuleAdmin, FileModule
+    PrismaModule, UserModule,UserModuleAdmin, FileModule, CarTypeModule, CarsModule
   ],
   controllers: [AppController],
   providers: [

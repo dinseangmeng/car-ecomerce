@@ -136,6 +136,18 @@ export class UserService {
                 secret:SECRETE_KEY
             })
         }
+
+        async listing(page:Number,size:Number){
+            const n_car=await this.prisma.car.count({})
+            const car=await this.prisma.car.findMany({
+                select:{
+                    id:true,
+                    name:true,
+                    imagePath:true,
+                    model:true,
+                }
+            })
+        }
     
     }
     

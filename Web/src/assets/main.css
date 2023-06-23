@@ -1,7 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');
 *,*::after,*::before{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 'Koulen', cursive;
 }
 #app{
   max-width: 100vw;
@@ -12,4 +14,7 @@
   align-items: center;
   background-color: #1b3746;
   
+}
+#app >div{
+  width: 100%;
 }

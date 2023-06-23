@@ -3,45 +3,34 @@ import { FileInterceptor } from '@nestjs/platform-express'
 import { JwtGuard } from 'src/Auth/guard/jwt.guard'
 import { FileService } from './file.service'
 import { Request } from 'express';
-import {existsSync} from 'fs'
-@Controller('file')
+import {existsSync, statSync} from 'fs'
+@Controller('static')
 export class FileController{
     constructor(private fileService:FileService){}
     
-    @Get()
-    getFile(@Query('filePath') imagePath, @Res() res){
-        // return imagePath;
-        if(existsSync(imagePath)){
-            return res.sendFile(imagePath,{root:'./'})
+    @Get("/get/*")
+    getCardImage(@Req() req, @Res() res){
+        let filePath:String = req.url.replace('/static', '').replace('/get/','');
+        filePath=filePath.split('%20').join(" ");
+        const rootPath = './';
+        // console.log(filePath);
+        
+        const file = `${rootPath}${filePath}`;
+        console.log(file);
+        
+        if (existsSync(file) && statSync(file).isFile()) {
+            return res.sendFile(file,{root:'./'});
+        } else {
+            return res.status(404).sendFile('./asset/file_NotFoundException.html',{root:'./src'});
         }
-        return res.send("<h1 style='color:red;width: 100%;height: 100vh;display:flex;justify-content:center;align-items: center;font-size:3rem;'>File Not Found</h1>")
     }
+
   
-    @Post('postfile')
-    @UseGuards(JwtGuard)
-    @UseInterceptors(FileInterceptor('file'))
-    addFileImage(@UploadedFile() file:any, @Req() reg:Request){
-        return this.fileService.AddFile(file,reg.user);
-    }   
-
-    @Get('list')
-    @UseGuards(JwtGuard)
-    ListMyFile(@Req() reg:Request){
-        return this.fileService.listing(reg.user)
-    }
-
-    @Delete(':id')
-    @UseGuards(JwtGuard)
-    Delete(@Param() id:number,@Req() reg : Request){
-        return this.fileService.DeleteFile(id,reg.user)
-    }
 
 
-    @Put(':id')
-    @UseGuards(JwtGuard)
-    @UseInterceptors(FileInterceptor('file'))
-    Update(@UploadedFile() file:any,@Param() id:number,@Req() reg : Request){
-        return this.fileService.UpdateFile(file,id,reg.user)
-    }
+
+
+
+
 
 }

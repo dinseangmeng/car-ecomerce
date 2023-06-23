@@ -30,7 +30,7 @@ export class UserService {
                 updated:true,
                 statusId:true,
                 status:true,
-                card:true
+                cars:true
             },
             take:10,
         })

@@ -1,346 +1,168 @@
 <template>
-  <main>
-    <div class="layer1">
-      <HeaderNav color="white" HightLight="rgba(202, 202, 202,.7)"/>
-      <br>
-      <br>
-      <div class="container">
-        <div class="col1">
-          <div class="text">
-            <div class="text-l">
-              <h1>COSTUMIZE YOUR </h1>
-              <p>CHOOSE ANY CAR</p>
+  <defaultLayout >
+    <main>
+      <div class="layer1">
+        <HeaderNav color="white" HightLight="rgba(202, 202, 202,.7)"/>
+        <br>
+        <br>
+        <div class="container">
+          <div class="col1">
+            <div class="text">
+              <div class="text-l">
+                <h1>COSTUMIZE YOUR </h1>
+                <p>CHOOSE ANY CAR</p>
+              </div>
+              <div class="text-c">
+                ANY
+              </div>
+              <div class="text-r">
+                <h1>DREAM CAR </h1>
+                <p>WHERE YOU ARE</p> 
+              </div>
+              
             </div>
-            <div class="text-c">
-              ANY
-            </div>
-            <div class="text-r">
-              <h1>DREAM CAR </h1>
-              <p>WHERE YOU ARE</p> 
-            </div>
-            
+            <RouterLink :to="{name:'collection'}">CHECK OUT OUR COLLECTION</RouterLink>
           </div>
-          <RouterLink :to="{name:'collection'}">CHECK OUT OUR COLLECTION</RouterLink>
+          <div class="col2">
+            <img src="../assets/img/main.png" alt="">
+          </div>
         </div>
-        <div class="col2">
-          <img src="../assets/img/main.png" alt="">
+        
+      </div>
+      <div class="collaborate">
+        <img src="../assets/img/car_logo/Hyundai.gif" alt="hyundia">
+        <img src="../assets/img/car_logo/BMW-Logo.png" alt="BMW">
+        <img src="../assets/img/car_logo/toyota.png" alt="toyota">
+        <img src="../assets/img/car_logo/tesla.png" alt="tesla">
+        <img src="../assets/img/car_logo/Bugatti-Logo-1909.png" alt="bugatti">
+      </div>
+      <div class="mini_collection">
+        <div class="left_cat">
+          <div class="category">
+            <img src="../assets/img/category_icon/pickup.png" alt="pickup">
+            PICKUP
+          </div>
+          <div class="category">
+            <img src="../assets/img/category_icon/coupe.png" alt="coupe">
+            COUPE
+          </div>
+          
+          <div class="category">
+            <img src="../assets/img/category_icon/sport_car.png" alt="sport car">
+            SPORT CAR
+          </div>
+          
+          <div class="category">
+            <img src="../assets/img/category_icon/van.png" alt="van">
+            VAN
+          </div>
+          
+          <div class="category">
+            <img src="../assets/img/category_icon/roadster.png" alt="roadster">
+            ROADSTER
+          </div>
+          
+          <div class="category">
+            <img src="../assets/img/category_icon/suv.png" alt="suv">
+            SUV
+          </div>
+          
+        </div>
+        <div class="collections">
+          <div class="card">
+            <img src="../assets/img/car_product/ferrari.png" alt="ferrari">
+            <hr>
+            <div class="content">
+              <div class="detail">
+                MODEL: ...........
+              </div>
+              <div class="detail">
+                TYPE: ...........
+              </div>
+            </div>
+            <a href="#">MORE</a>
+          </div>
+          <div class="card">
+            <img src="../assets/img/car_product/fortuner.png" alt="fortuner">
+            <hr>
+            <div class="content">
+              <div class="detail">
+                MODEL: ...........
+              </div>
+              <div class="detail">
+                TYPE: ...........
+              </div>
+            </div>
+            <a href="#">MORE</a>
+          </div>
+          <div class="card">
+            <img src="../assets/img/car_product/Hyundia_Grand_i10_NIOS.png" alt="Hyundia_Grand_i10_NIOS">
+            <hr>
+            <div class="content">
+              <div class="detail">
+                MODEL: ...........
+              </div>
+              <div class="detail">
+                TYPE: ...........
+              </div>
+            </div>
+            <a href="#">MORE</a>
+          </div>
+          <div class="card">
+            <img src="../assets/img/car_product/old_school.png" alt="old_school">
+            <hr>
+            <div class="content">
+              <div class="detail">
+                MODEL: ...........
+              </div>
+              <div class="detail">
+                TYPE: ...........
+              </div>
+            </div>
+            <a href="#">MORE</a>
+          </div>
+          <div class="card">
+            <img src="../assets/img/car_product/tesla_model_s_II.png" alt="tesla_model_s_II">
+            <hr>
+            <div class="content">
+              <div class="detail">
+                MODEL: ...........
+              </div>
+              <div class="detail">
+                TYPE: ...........
+              </div>
+            </div>
+            <a href="#">MORE</a>
+          </div>
+          <div class="card">
+            <img src="../assets/img/car_product/ferrari.png" alt="ferrari">
+            <hr>
+            <div class="content">
+              <div class="detail">
+                MODEL: ...........
+              </div>
+              <div class="detail">
+                TYPE: ...........
+              </div>
+            </div>
+            <a href="#">MORE</a>
+          </div>
+        
+          
         </div>
       </div>
+      <RouterLink :to="{name:'collection'}">see more</RouterLink>
       
-    </div>
-    <div class="collaborate">
-      <img src="../assets/img/car_logo/Hyundai.gif" alt="hyundia">
-      <img src="../assets/img/car_logo/BMW-Logo.png" alt="BMW">
-      <img src="../assets/img/car_logo/toyota.png" alt="toyota">
-      <img src="../assets/img/car_logo/tesla.png" alt="tesla">
-      <img src="../assets/img/car_logo/Bugatti-Logo-1909.png" alt="bugatti">
-    </div>
-    <div class="mini_collection">
-      <div class="left_cat">
-        <div class="category">
-          <img src="../assets/img/category_icon/pickup.png" alt="pickup">
-          PICKUP
-        </div>
-        <div class="category">
-          <img src="../assets/img/category_icon/coupe.png" alt="coupe">
-          COUPE
-        </div>
-        
-        <div class="category">
-          <img src="../assets/img/category_icon/sport_car.png" alt="sport car">
-          SPORT CAR
-        </div>
-        
-        <div class="category">
-          <img src="../assets/img/category_icon/van.png" alt="van">
-          VAN
-        </div>
-        
-        <div class="category">
-          <img src="../assets/img/category_icon/roadster.png" alt="roadster">
-          ROADSTER
-        </div>
-        
-        <div class="category">
-          <img src="../assets/img/category_icon/suv.png" alt="suv">
-          SUV
-        </div>
-        
-      </div>
-      <div class="collections">
-        <div class="card">
-          <img src="../assets/img/car_product/ferrari.png" alt="ferrari">
-          <hr>
-          <div class="content">
-            <div class="detail">
-              MODEL: ...........
-            </div>
-            <div class="detail">
-              TYPE: ...........
-            </div>
-          </div>
-          <a href="#">MORE</a>
-        </div>
-        <div class="card">
-          <img src="../assets/img/car_product/fortuner.png" alt="fortuner">
-          <hr>
-          <div class="content">
-            <div class="detail">
-              MODEL: ...........
-            </div>
-            <div class="detail">
-              TYPE: ...........
-            </div>
-          </div>
-          <a href="#">MORE</a>
-        </div>
-        <div class="card">
-          <img src="../assets/img/car_product/Hyundia_Grand_i10_NIOS.png" alt="Hyundia_Grand_i10_NIOS">
-          <hr>
-          <div class="content">
-            <div class="detail">
-              MODEL: ...........
-            </div>
-            <div class="detail">
-              TYPE: ...........
-            </div>
-          </div>
-          <a href="#">MORE</a>
-        </div>
-        <div class="card">
-          <img src="../assets/img/car_product/old_school.png" alt="old_school">
-          <hr>
-          <div class="content">
-            <div class="detail">
-              MODEL: ...........
-            </div>
-            <div class="detail">
-              TYPE: ...........
-            </div>
-          </div>
-          <a href="#">MORE</a>
-        </div>
-        <div class="card">
-          <img src="../assets/img/car_product/tesla_model_s_II.png" alt="tesla_model_s_II">
-          <hr>
-          <div class="content">
-            <div class="detail">
-              MODEL: ...........
-            </div>
-            <div class="detail">
-              TYPE: ...........
-            </div>
-          </div>
-          <a href="#">MORE</a>
-        </div>
-        <div class="card">
-          <img src="../assets/img/car_product/ferrari.png" alt="ferrari">
-          <hr>
-          <div class="content">
-            <div class="detail">
-              MODEL: ...........
-            </div>
-            <div class="detail">
-              TYPE: ...........
-            </div>
-          </div>
-          <a href="#">MORE</a>
-        </div>
-        <div class="card">
-          <img src="../assets/img/car_product/fortuner.png" alt="fortuner">
-          <hr>
-          <div class="content">
-            <div class="detail">
-              MODEL: ...........
-            </div>
-            <div class="detail">
-              TYPE: ...........
-            </div>
-          </div>
-          <a href="#">MORE</a>
-        </div>
-        <div class="card">
-          <img src="../assets/img/car_product/Hyundia_Grand_i10_NIOS.png" alt="Hyundia_Grand_i10_NIOS">
-          <hr>
-          <div class="content">
-            <div class="detail">
-              MODEL: ...........
-            </div>
-            <div class="detail">
-              TYPE: ...........
-            </div>
-          </div>
-          <a href="#">MORE</a>
-        </div>
-        <div class="card">
-          <img src="../assets/img/car_product/old_school.png" alt="old_school">
-          <hr>
-          <div class="content">
-            <div class="detail">
-              MODEL: ...........
-            </div>
-            <div class="detail">
-              TYPE: ...........
-            </div>
-          </div>
-          <a href="#">MORE</a>
-        </div>
-        <div class="card">
-          <img src="../assets/img/car_product/tesla_model_s_II.png" alt="tesla_model_s_II">
-          <hr>
-          <div class="content">
-            <div class="detail">
-              MODEL: ...........
-            </div>
-            <div class="detail">
-              TYPE: ...........
-            </div>
-          </div>
-          <a href="#">MORE</a>
-        </div>
-        <div class="card">
-          <img src="../assets/img/car_product/ferrari.png" alt="ferrari">
-          <hr>
-          <div class="content">
-            <div class="detail">
-              MODEL: ...........
-            </div>
-            <div class="detail">
-              TYPE: ...........
-            </div>
-          </div>
-          <a href="#">MORE</a>
-        </div>
-        <div class="card">
-          <img src="../assets/img/car_product/fortuner.png" alt="fortuner">
-          <hr>
-          <div class="content">
-            <div class="detail">
-              MODEL: ...........
-            </div>
-            <div class="detail">
-              TYPE: ...........
-            </div>
-          </div>
-          <a href="#">MORE</a>
-        </div>
-        <div class="card">
-          <img src="../assets/img/car_product/Hyundia_Grand_i10_NIOS.png" alt="Hyundia_Grand_i10_NIOS">
-          <hr>
-          <div class="content">
-            <div class="detail">
-              MODEL: ...........
-            </div>
-            <div class="detail">
-              TYPE: ...........
-            </div>
-          </div>
-          <a href="#">MORE</a>
-        </div>
-        <div class="card">
-          <img src="../assets/img/car_product/old_school.png" alt="old_school">
-          <hr>
-          <div class="content">
-            <div class="detail">
-              MODEL: ...........
-            </div>
-            <div class="detail">
-              TYPE: ...........
-            </div>
-          </div>
-          <a href="#">MORE</a>
-        </div>
-        <div class="card">
-          <img src="../assets/img/car_product/tesla_model_s_II.png" alt="tesla_model_s_II">
-          <hr>
-          <div class="content">
-            <div class="detail">
-              MODEL: ...........
-            </div>
-            <div class="detail">
-              TYPE: ...........
-            </div>
-          </div>
-          <a href="#">MORE</a>
-        </div>
-        <div class="card">
-          <img src="../assets/img/car_product/ferrari.png" alt="ferrari">
-          <hr>
-          <div class="content">
-            <div class="detail">
-              MODEL: ...........
-            </div>
-            <div class="detail">
-              TYPE: ...........
-            </div>
-          </div>
-          <a href="#">MORE</a>
-        </div>
-        <div class="card">
-          <img src="../assets/img/car_product/fortuner.png" alt="fortuner">
-          <hr>
-          <div class="content">
-            <div class="detail">
-              MODEL: ...........
-            </div>
-            <div class="detail">
-              TYPE: ...........
-            </div>
-          </div>
-          <a href="#">MORE</a>
-        </div>
-        <div class="card">
-          <img src="../assets/img/car_product/Hyundia_Grand_i10_NIOS.png" alt="Hyundia_Grand_i10_NIOS">
-          <hr>
-          <div class="content">
-            <div class="detail">
-              MODEL: ...........
-            </div>
-            <div class="detail">
-              TYPE: ...........
-            </div>
-          </div>
-          <a href="#">MORE</a>
-        </div>
-        <div class="card">
-          <img src="../assets/img/car_product/old_school.png" alt="old_school">
-          <hr>
-          <div class="content">
-            <div class="detail">
-              MODEL: ...........
-            </div>
-            <div class="detail">
-              TYPE: ...........
-            </div>
-          </div>
-          <a href="#">MORE</a>
-        </div>
-        <div class="card">
-          <img src="../assets/img/car_product/tesla_model_s_II.png" alt="tesla_model_s_II">
-          <hr>
-          <div class="content">
-            <div class="detail">
-              MODEL: ...........
-            </div>
-            <div class="detail">
-              TYPE: ...........
-            </div>
-          </div>
-          <a href="#">MORE</a>
-        </div>
-        
-      </div>
-    </div>
-    <RouterLink :to="{name:'collection'}">see more</RouterLink>
-    
-    <br>
-  </main>
+      <br>
+    </main>
+
+  </defaultLayout>
   
 </template>
 
 <script setup>
 import {RouterLink} from 'vue-router'
-import HeaderNav from '../component/HeaderNav.vue';
+import defaultLayout from '../layout/default.vue';
 </script>
 
 <style lang="scss" scoped>

@@ -31,16 +31,28 @@ model User {
   updated DateTime? @updatedAt
   status Status? @relation(fields: [statusId], references: [id],onDelete:SetNull)
   statusId Int? 
-  file file[]
+  cars car[]
 }
-model file{
+
+model car_type{
+    id Int @id @default(autoincrement())
+    name String
+    imagePath String
+    car car[]
+}
+
+model car{
   id Int @id @default(autoincrement())
   name String
-  path String
+  imagePath String
+  model String
+  price Decimal
+
+  type car_type? @relation(fields: [car_type_id], references: [id],onDelete:SetNull)
+  car_type_id Int?
 
   user User? @relation(fields: [userId], references: [id],onDelete:SetNull)
   userId Int? 
   
 }
-
 

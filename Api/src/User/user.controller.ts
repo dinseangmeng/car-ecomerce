@@ -1,4 +1,4 @@
-import { Controller,Get,Req,UseGuards ,Delete, Param,Put,Body, UseInterceptors, UploadedFile} from '@nestjs/common';
+import { Controller,Get,Req,UseGuards ,Delete, Param,Put,Body, UseInterceptors, UploadedFile, Query} from '@nestjs/common';
 import { UserService } from './user.service';
 import {AuthGuard} from '@nestjs/passport'
 import { Request } from 'express';
@@ -34,6 +34,13 @@ export class UserController {
         // console.log(data);
         
         return this.UserService.ChangePassword(data,reg.user)
+    }
+
+
+    @Get('cars')
+    @UseGuards(JwtGuard)
+    listCar(@Query('page') page:Number = 0,@Query('size') size:Number = 50){
+
     }
    
 

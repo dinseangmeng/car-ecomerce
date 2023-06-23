@@ -5,22 +5,8 @@ import { createStore } from 'vuex'
 export default createStore({
   state : {
     cartPender:2,
-    trending:[
-      {
-        model:"Grand I10 NIOS",
-        Type:"Lift Back",
-        Company:"Hyundia",
-        image:"Hyundia_Grand_i10_NIOS.png"
-      }
-    ],
-    product:[
-      {
-        model:"Grand I10 NIOS",
-        Type:"Lift Back",
-        Company:"Hyundia",
-        image:"Hyundia_Grand_i10_NIOS.png"
-      }
-    ]
+    apiUrl:"http://localhost:3000/api",
+    fileUrl:"http://localhost:3000/static/get",
   },
   mutations: {
     increment(state,value){

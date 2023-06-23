@@ -1,14 +1,13 @@
 <template>
     <main>
 
-        <HeaderNav />
     </main>
-        Contact anytime
- 
+    Contact anytime
+    
 </template>
 
 <script setup>
-import HeaderNav from '../component/HeaderNav.vue';
+
 </script>
 
 <style lang="scss" scoped>
