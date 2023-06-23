@@ -33,35 +33,41 @@
             </div>
             <div class="mini_collection">
         <div class="left_cat">
-          <div class="category">
-            <img src="../assets/img/category_icon/pickup.png" alt="pickup">
-            PICKUP
+          <div class="sub">
+
+            <div class="category">
+              <img src="../assets/img/category_icon/pickup.png" alt="pickup">
+              PICKUP
+            </div>
+            <div class="category">
+              <img src="../assets/img/category_icon/coupe.png" alt="coupe">
+              COUPE
+            </div>
+            
+            <div class="category">
+              <img src="../assets/img/category_icon/sport_car.png" alt="sport car">
+              SPORT CAR
+            </div>
+            
+            <div class="category">
+              <img src="../assets/img/category_icon/van.png" alt="van">
+              VAN
+            </div>
+            
+            <div class="category">
+              <img src="../assets/img/category_icon/roadster.png" alt="roadster">
+              ROADSTER
+            </div>
+            
+            <div class="category">
+              <img src="../assets/img/category_icon/suv.png" alt="suv">
+              SUV
+            </div>
           </div>
-          <div class="category">
-            <img src="../assets/img/category_icon/coupe.png" alt="coupe">
-            COUPE
+          <div class="search">
+            <input type="search" placeholder="FIND YOUR DREAM CAR">
+            <button>Search</button>
           </div>
-          
-          <div class="category">
-            <img src="../assets/img/category_icon/sport_car.png" alt="sport car">
-            SPORT CAR
-          </div>
-          
-          <div class="category">
-            <img src="../assets/img/category_icon/van.png" alt="van">
-            VAN
-          </div>
-          
-          <div class="category">
-            <img src="../assets/img/category_icon/roadster.png" alt="roadster">
-            ROADSTER
-          </div>
-          
-          <div class="category">
-            <img src="../assets/img/category_icon/suv.png" alt="suv">
-            SUV
-          </div>
-          
         </div>
         <div class="collections">
           <div class="card">
@@ -496,8 +502,13 @@ main{
             
         }
         .left_cat{
-            
-            width: fit-content;
+          width: fit-content;
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+           .sub{
+             
+            width: 100%;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -562,6 +573,37 @@ main{
                     }
                 }
             }
+           }
+           .search{
+            max-width: 100%;
+            border-radius: .2rem;
+            overflow: hidden;
+            display: flex;
+            border: 2px solid black;
+            input{
+              width: 100%;
+              border: none;
+              outline: none;
+              padding: .2rem 1rem;
+              background-color: transparent;
+              caret-color: white;
+              color: white;
+              // padding: 0 1rem;
+              &::placeholder{
+                font-size: 1rem;
+ 
+              }
+            }
+            button{
+              // padding: .1rem 0;
+              width: fit-content;
+              border: none;
+              outline: none;
+              padding: 0 .4rem;
+              background-color: black;
+                color: white;
+            }
+           }
         }
         .collections{
             width: 100%;
