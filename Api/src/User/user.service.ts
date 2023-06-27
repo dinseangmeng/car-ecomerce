@@ -34,7 +34,7 @@ export class UserService {
             
             if(file){
                 // console.log("hi")
-                var newName=this.fileService.SaveImage(file,'file/user')
+                var newName=await this.fileService.SaveImage(file,'file/user')
                 try {
                     fs.unlinkSync(`${tmpUser.profile}`)
                     //file removed

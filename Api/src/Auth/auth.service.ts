@@ -21,7 +21,7 @@ export class AuthService {
         async register(file:any,userInfo:UserValidation){
             if(file){
                 // console.log("hi")
-                var newName=this.fileService.SaveImage(file,'file/user')
+                var newName=await this.fileService.SaveImage(file,'file/user')
             }else{
                 var url = `https://api.multiavatar.com/${userInfo.username}.png`
                 const preUnique=Math.floor(Math.random()*10e10+9999999);

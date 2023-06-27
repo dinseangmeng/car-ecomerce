@@ -48,7 +48,7 @@ export class CarsService {
     async add(file:any,carData:car_validator ,User:any){
         let filePath:any="file/Default/default_image_Card.png"
         if(file){
-            filePath=this.fileService.SaveImage(file,'file')
+            filePath=await this.fileService.SaveImage(file,'file')
         }
         const newCard=await this.prisma.car.create({
             data:{
