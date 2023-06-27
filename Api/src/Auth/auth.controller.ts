@@ -21,13 +21,14 @@ export class AuthController {
         return this.authProvider.Login(userInfo)
     }
 
-    @Status(RoleEnum.Admin)
-    @UseGuards(JwtGuard,RolesGuard)
+    // @Status(RoleEnum.Admin)
+    // @UseGuards(JwtGuard,RolesGuard)
     @Post("register")
     @UseInterceptors(FileInterceptor('profile'))
     register(@UploadedFile() file:any,@Body() userInfo:UserValidation){
         return this.authProvider.register(file,userInfo)
     }
+    
     
 
 }
