@@ -80,7 +80,7 @@ export class UserService {
             } catch(err) {
                 console.error(err)
             }
-            var newName=this.fileService.SaveImage(file,'file/user')
+            var newName=await this.fileService.SaveImage(file,'file/user')
         }else if(!tmp.profile){
             try {
                 fs.unlinkSync(`${tmp.profile}`)
