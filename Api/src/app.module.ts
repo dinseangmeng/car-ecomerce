@@ -15,6 +15,7 @@ import { NotFoundExceptionFilter } from './Exception/404_Exception';
 // import { Controller } from './..controller';
 import { CarTypeModule } from './car_type/car-type.module';
 import { CarsModule } from './cars/cars.module';
+import { AwsS3Module } from './aws-s3/aws-s3.module';
 @Module({
   imports: [
     ConfigModule.forRoot({
@@ -24,7 +25,7 @@ import { CarsModule } from './cars/cars.module';
       dest:'/file'
     }),
     AuthModule, 
-    PrismaModule, UserModule,UserModuleAdmin, FileModule, CarTypeModule, CarsModule
+    PrismaModule, UserModule,UserModuleAdmin, FileModule, CarTypeModule, CarsModule, AwsS3Module
   ],
   controllers: [AppController],
   providers: [
@@ -32,6 +33,7 @@ import { CarsModule } from './cars/cars.module';
       provide: APP_FILTER,
       useClass: NotFoundExceptionFilter,
     }
+    
   ],
 })
 export class AppModule {}

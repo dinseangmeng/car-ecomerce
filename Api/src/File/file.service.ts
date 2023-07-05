@@ -2,59 +2,28 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma/prisma.service';
 import { ConfigService } from '@nestjs/config/dist';
 import { createWriteStream , existsSync, mkdirSync,unlinkSync} from 'fs';
+import { AwsS3Service } from 'src/aws-s3/aws-s3.service';
 
 @Injectable()
 export class FileService {
   constructor(
     private prisma :PrismaService,
-    private config:ConfigService
+    private config:ConfigService,
+    private readonly awsS3Service: AwsS3Service
     ){}
     
-    SaveImage(file:any,path:string){
-      if (!file) {
-        throw new Error('No file uploaded');
-      }
-      const { originalname, buffer } = file;
-      if (!buffer || buffer.length === 0) {
-        throw new Error('Empty file buffer');
-      }
-      const fileName = `${Date.now()}_${originalname}`;
-      var filePath = `${path}/${fileName}`;
-      if (!existsSync(`${path}`)) {
-        mkdirSync(`${path}`);
-      }
-      const fileStream = createWriteStream(filePath);
-      fileStream.on('error', (error) => {
-        throw error;
-      });
-      fileStream.write(buffer);
-      fileStream.end();
-      return filePath;
+    async SaveImage(file:any,path:string){
+      const bucketName = 'car-eccomerce-ip';
+      const fileExtension = file.originalname.split('.').pop(); // Get the file extension
+      const newName = `${Date.now()}${Math.round(Math.random()*9999999)}.${fileExtension}`;
+  
+      const result = await this.awsS3Service.uploadFile(bucketName, newName, file.buffer,'public-read');
+      return result.Location;
     }
     
-    PostOtherFile(file:any){
-      let path='file/asset'
-      if (!file) {
-        throw new Error('No file uploaded');
-      }
-      const { originalname, buffer } = file;
-      if (!buffer || buffer.length === 0) {
-        throw new Error('Empty file buffer');
-      }
-      var fileName = `${Date.now()}_${originalname}`;
-      var filePath = `./${path}/${fileName}`;
-      if (!existsSync(`./${path}`)) {
-        mkdirSync(`./${path}`);
-      }
-      const fileStream = createWriteStream(filePath);
-      fileStream.on('error', (error) => {
-        throw error;
-      });
-      fileStream.write(buffer);
-      fileStream.end();
-      return {fileName,filePath};
-    }
+ 
     
+
     
 
     

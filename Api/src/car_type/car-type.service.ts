@@ -32,7 +32,7 @@ export class CarTypeService {
     async add(file:any,car_model:type_validator){
         let filePath:any="file/Default/default_car_model.png"
         if(file){
-            filePath=this.fileService.SaveImage(file,'file')
+            filePath=await this.fileService.SaveImage(file,'file')
 
         }
         const carModel=await this.prisma.car_type.create({
@@ -66,7 +66,7 @@ export class CarTypeService {
                 
             }
             
-            var newName= this.fileService.SaveImage(file,'file')
+            var newName=await this.fileService.SaveImage(file,'file')
         }else{
             if(carModelTmp.imagePath) var newName = carModelTmp.imagePath
         }
