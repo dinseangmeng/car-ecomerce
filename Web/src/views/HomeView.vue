@@ -38,115 +38,43 @@
       </div>
       <div class="mini_collection">
         <div class="left_cat">
-          <div class="category">
-            <img src="../assets/img/category_icon/pickup.png" alt="pickup">
-            PICKUP
+          <div id="loading" v-if="isCatLoading">
+            <span class="loader"></span>
           </div>
-          <div class="category">
-            <img src="../assets/img/category_icon/coupe.png" alt="coupe">
-            COUPE
+          <div id="empty_cat" v-if="isCatEmpty">
+            <img src="../assets/img/empty.png" alt="empty">
+            <h1>No Category</h1>
           </div>
-          
-          <div class="category">
-            <img src="../assets/img/category_icon/sport_car.png" alt="sport car">
-            SPORT CAR
+          <div class="category" v-for="item in carCategory" v-if="!isCatLoading&&!isCatEmpty">
+            <img :src="item.imagePath" alt="pickup">
+            {{ item.name }}
           </div>
-          
-          <div class="category">
-            <img src="../assets/img/category_icon/van.png" alt="van">
-            VAN
-          </div>
-          
-          <div class="category">
-            <img src="../assets/img/category_icon/roadster.png" alt="roadster">
-            ROADSTER
-          </div>
-          
-          <div class="category">
-            <img src="../assets/img/category_icon/suv.png" alt="suv">
-            SUV
-          </div>
-          
+     
         </div>
+        
         <div class="collections">
-          <div class="card">
-            <img src="../assets/img/car_product/ferrari.png" alt="ferrari">
+          <div id="loading" style="width: 60vw;" v-if="isCarLoading">
+            <span class="loader"></span>
+          </div>
+          <div id="empty_cat" v-if="isCatEmpty">
+            <img src="../assets/img/empty.png" alt="empty">
+            <h1>No Car</h1>
+          </div>
+
+          <div class="card" v-if="!isCarLoading&&!isCarEmpty" v-for="item in car">
+            <img :src="item?.imagePath" :alt="item?.name">
             <hr>
             <div class="content">
               <div class="detail">
-                MODEL: ...........
+                MODEL: {{ item?.model }}
               </div>
               <div class="detail">
-                TYPE: ...........
+                TYPE: {{ item?.type?.name }}
               </div>
             </div>
             <a href="#">MORE</a>
           </div>
-          <div class="card">
-            <img src="../assets/img/car_product/fortuner.png" alt="fortuner">
-            <hr>
-            <div class="content">
-              <div class="detail">
-                MODEL: ...........
-              </div>
-              <div class="detail">
-                TYPE: ...........
-              </div>
-            </div>
-            <a href="#">MORE</a>
-          </div>
-          <div class="card">
-            <img src="../assets/img/car_product/Hyundia_Grand_i10_NIOS.png" alt="Hyundia_Grand_i10_NIOS">
-            <hr>
-            <div class="content">
-              <div class="detail">
-                MODEL: ...........
-              </div>
-              <div class="detail">
-                TYPE: ...........
-              </div>
-            </div>
-            <a href="#">MORE</a>
-          </div>
-          <div class="card">
-            <img src="../assets/img/car_product/old_school.png" alt="old_school">
-            <hr>
-            <div class="content">
-              <div class="detail">
-                MODEL: ...........
-              </div>
-              <div class="detail">
-                TYPE: ...........
-              </div>
-            </div>
-            <a href="#">MORE</a>
-          </div>
-          <div class="card">
-            <img src="../assets/img/car_product/tesla_model_s_II.png" alt="tesla_model_s_II">
-            <hr>
-            <div class="content">
-              <div class="detail">
-                MODEL: ...........
-              </div>
-              <div class="detail">
-                TYPE: ...........
-              </div>
-            </div>
-            <a href="#">MORE</a>
-          </div>
-          <div class="card">
-            <img src="../assets/img/car_product/ferrari.png" alt="ferrari">
-            <hr>
-            <div class="content">
-              <div class="detail">
-                MODEL: ...........
-              </div>
-              <div class="detail">
-                TYPE: ...........
-              </div>
-            </div>
-            <a href="#">MORE</a>
-          </div>
+       
         
           
         </div>
@@ -161,11 +89,79 @@
 </template>
 
 <script setup>
+import {ref} from "vue"
 import {RouterLink} from 'vue-router'
 import defaultLayout from '../layout/default.vue';
+import axios from 'axios'
+const isCatLoading=ref(true)
+const isCarLoading=ref(true)
+const carCategory=ref([])
+const car=ref([])
+const isCatEmpty=ref(false)
+const isCarEmpty=ref(false)
+axios.get(`${process.env.API_URL}/car-type`).then(
+  res=>{
+    carCategory.value=res.data.car_model
+    if(carCategory.value.length<=0){
+      isCatEmpty=true
+    }
+    isCatLoading.value=false
+  }
+)
+axios.get(`${process.env.API_URL}/cars`).then(
+  res=>{
+    car.value=res.data.cars
+    if(car.value.length<=0){
+      isCarEmpty=true
+    }
+    isCarLoading.value=false
+  }
+)
+
 </script>
 
 <style lang="scss" scoped>
+#loading{
+  
+  min-width: 12rem;
+  width: 100%;
+  height: 20rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .loader {
+      width: 48px;
+      height: 48px;
+      border: 5px solid #FFF;
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      display: inline-block;
+      box-sizing: border-box;
+      animation: rotation 1s linear infinite;
+      }
+  
+      @keyframes rotation {
+      0% {
+          transform: rotate(0deg);
+      }
+      100% {
+          transform: rotate(360deg);
+      }
+      } 
+}
+#empty_cat{
+  min-width: 12rem;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  img{
+    width: 10rem;
+  }
+
+}
+
 main{
   width: 100%;
   background-color: #1b3746;
@@ -326,7 +322,7 @@ main{
       
     }
     .left_cat{
-      
+      // min-width: 10rem;
       width: fit-content;
       display: flex;
       flex-direction: column;
@@ -419,7 +415,8 @@ main{
           height: 100%;
         }
         img{
-          width: 100%;
+          max-width: 100%;
+          max-height: 13rem;
           object-fit: scale-down;
         }
         hr{
