@@ -56,7 +56,7 @@
           <div id="loading" style="width: 60vw;" v-if="isCarLoading">
             <span class="loader"></span>
           </div>
-          <div id="empty_cat" v-if="isCatEmpty">
+          <div id="empty_cat" v-if="isCatEmpty" style="width: 60vw;">
             <img src="../assets/img/empty.png" alt="empty">
             <h1>No Car</h1>
           </div>
