@@ -3,7 +3,6 @@ FROM node:14-alpine
 WORKDIR /app
 
 COPY . .
-RUN npm install prisma@latest @prisma/client@latest
 RUN npm install
 # RUN npx prisma init
 # RUN npx prisma generate
