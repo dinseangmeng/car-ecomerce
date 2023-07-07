@@ -21,6 +21,7 @@ export declare class CarsService {
                     id: number;
                 };
             };
+            id: number;
             name: string;
             imagePath: string;
             model: string;

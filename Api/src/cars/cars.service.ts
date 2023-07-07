@@ -15,6 +15,7 @@ export class CarsService {
         const cars_n=await this.prisma.car.count({})
         const cars=await this.prisma.car.findMany({
             select:{
+                id:true,
                 name:true,
                 imagePath:true,
                 model:true,

@@ -103,7 +103,7 @@ axios.get(`${process.env.API_URL}/car-type`).then(
   res=>{
     carCategory.value=res.data.car_model
     if(carCategory.value.length<=0){
-      isCatEmpty=true
+      isCatEmpty.value=true
     }
     isCatLoading.value=false
   }
@@ -112,7 +112,7 @@ axios.get(`${process.env.API_URL}/cars`).then(
   res=>{
     car.value=res.data.cars
     if(car.value.length<=0){
-      isCarEmpty=true
+      isCarEmpty.value=true
     }
     isCarLoading.value=false
   }

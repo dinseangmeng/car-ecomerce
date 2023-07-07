@@ -19,6 +19,7 @@ export declare class CarsController {
                     id: number;
                 };
             };
+            id: number;
             name: string;
             imagePath: string;
             model: string;
