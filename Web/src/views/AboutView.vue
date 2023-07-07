@@ -38,7 +38,7 @@
               <p> Designed with cutting-edge technology and premium materials, XDrive is engineered to provide maximum performance and comfort. Our team of experts works tirelessly to ensure that every aspect of your driving experience is optimized for the best possible results.</p></div>
             </section>
           </div>
-          
+          <br>
           <div class="collaborate">
             <img src="../assets/img/car_logo/Hyundai.gif" alt="hyundia">
             <img src="../assets/img/car_logo/BMW-Logo.png" alt="BMW">
@@ -47,7 +47,7 @@
             <img src="../assets/img/car_logo/Bugatti-Logo-1909.png" alt="bugatti">
           </div>
         </main>
-        
+        <br><br>
       </defaultLayout>
     </template>
     

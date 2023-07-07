@@ -180,6 +180,8 @@
             
         </div>
         <br>
+        <h1 class="hightlight">Checkout Collection</h1>
+        <br>
         <br>
     </defaultLayout>
 </template>
@@ -200,6 +202,13 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
+.hightlight{
+    text-align: center;
+    padding: .5rem;
+    background-color: #0d7ce4;
+    font-size: 1.5rem;
+    color: white;
+}
 #container{
     width: 100%;
     // min-height: 80vh;

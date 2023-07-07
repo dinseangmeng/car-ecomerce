@@ -93,6 +93,8 @@
           
         </div>
       </div>
+
+     
     </main>
     
   </defaultLayout>
@@ -455,7 +457,8 @@ main{
           height: 100%;
         }
         img{
-          width: 100%;
+          max-width: 100%;
+          max-height: 13rem;
           object-fit: scale-down;
         }
         hr{
