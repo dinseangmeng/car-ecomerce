@@ -51,8 +51,8 @@
                         </select>
                         <input type="number" min="1" step="1" placeholder="Quantity">
                         <div class="btn">
-                            <button class="cart">Add to cart</button>
-                            <button>Pay</button>
+                            <RouterLink :to="`/car/cart/${itemId}`" class="cart">Add to cart</RouterLink>
+                            <RouterLink :to="`/car/cart/${itemId}`">Pay</RouterLink>
                         </div>
                     </div>
                 </div>
@@ -187,6 +187,7 @@
 </template>
 
 <script setup>
+import { RouterLink, RouterView } from 'vue-router'
 import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import Breadcrumb from '../component/Breadcrumb.vue';
@@ -314,7 +315,7 @@ onMounted(() => {
                     width: 53%;
                     display: flex;
                     justify-content: space-between;
-                    button{
+                    a{
                         padding: .2rem 1.2rem;
                         font-size: 1.5rem;
                         border: none;
