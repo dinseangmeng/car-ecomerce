@@ -72,7 +72,7 @@
                 TYPE: {{ item?.type?.name }}
               </div>
             </div>
-            <a href="#">MORE</a>
+            <RouterLink :to="`/car/${item?.id}`">MORE</RouterLink>
           </div>
        
         

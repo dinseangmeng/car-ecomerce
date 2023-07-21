@@ -51,7 +51,10 @@ const router = createRouter({
       name: 'ShippingInfoView',
       component: ShippingInfoView
     },
-  ]
+  ],
+  scrollBehavior (to, from, savedPosition) {
+    return { top: 0 }
+  }
 })
 
 export default router
