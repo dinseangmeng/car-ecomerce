@@ -98,10 +98,13 @@
         align-items:flex-end;
         flex-direction: column;
         padding: 1rem 0;
-        color: white;
+        label{
+            color: white;
+        }
         .title{
           font-size: 2rem;
           width: 90%;
+          color: white;
           
         }
         .inputs{
