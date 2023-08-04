@@ -107,6 +107,7 @@ import axios from 'axios'
 import defaultLayout from '../layout/default.vue';
 import 'vue3-carousel/dist/carousel.css'
 import { Carousel, Slide, Pagination, Navigation } from 'vue3-carousel'
+import store from "../store";
 const myCarousel = ref(null);
 const isCatLoading=ref(true)
 const isCarLoading=ref(true)
