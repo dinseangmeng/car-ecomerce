@@ -10,49 +10,131 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Status{
-  id Int @id @default(autoincrement())
-  statusName String @unique
-  user User[]
-  created DateTime @default(now())
-  updated DateTime? @updatedAt
+model Status {
+  id         Int       @id @default(autoincrement())
+  statusName String    @unique
+  user       User[]
+  created    DateTime? @default(now())
+  updated    DateTime? @updatedAt
 }
 
 model User {
-  id Int @id  @default(autoincrement())
-  email String? @unique
-  username String @unique
-  firstName String
-  lastName String
-  password String
-  profile String?
-  isactive Boolean? @default(true)
-  created DateTime @default(now())
-  updated DateTime? @updatedAt
-  status Status? @relation(fields: [statusId], references: [id],onDelete:SetNull)
-  statusId Int? 
-  cars car[]
+  id              Int               @id @default(autoincrement())
+  email           String?           @unique
+  username        String            @unique
+  firstName       String
+  lastName        String
+  password        String
+  profile         String?
+  isactive        Boolean?          @default(true)
+  created         DateTime          @default(now())
+  updated         DateTime?         @updatedAt
+  adress          String?
+  tel             String?
+  status          Status?           @relation(fields: [statusId], references: [id], onDelete: SetNull)
+  statusId        Int?
+  cars            car[]
+  shippingAddress shippingAddress[]
 }
 
-model car_type{
-    id Int @id @default(autoincrement())
-    name String
-    imagePath String
-    car car[]
-}
-
-model car{
-  id Int @id @default(autoincrement())
-  name String
+model car_type {
+  id        Int    @id @default(autoincrement())
+  name      String
   imagePath String
-  model String
-  price Decimal
+  car       car[]
+}
 
-  type car_type? @relation(fields: [car_type_id], references: [id],onDelete:SetNull)
+model car {
+  id        Int     @id @default(autoincrement())
+  name      String
+  imagePath String
+  model     String
+  price     Decimal
+
+  type        car_type? @relation(fields: [car_type_id], references: [id], onDelete: SetNull)
   car_type_id Int?
 
-  user User? @relation(fields: [userId], references: [id],onDelete:SetNull)
-  userId Int? 
-  
+  user   User? @relation(fields: [userId], references: [id], onDelete: SetNull)
+  userId Int?
+
+  order_details order_details[]
+  colors        car_color[]
+
+  tires car_tires[]
 }
 
+model shippingAddress {
+  id      Int     @id @default(autoincrement())
+  email   String?
+  tel     String?
+  addr1   String?
+  addr2   String?
+  country String?
+  city    String?
+  zipcode String?
+
+  created DateTime? @default(now())
+  updated DateTime? @updatedAt
+
+  User   User? @relation(fields: [userId], references: [id])
+  userId Int?
+
+  orders orders[]
+}
+
+model car_color {
+  id      Int       @id @default(autoincrement())
+  color   String
+  created DateTime? @default(now())
+  updated DateTime? @updatedAt
+  car     car?      @relation(fields: [carId], references: [id])
+  carId   Int?
+}
+
+model car_tires {
+  id      Int       @id @default(autoincrement())
+  tires   String
+  created DateTime? @default(now())
+  updated DateTime? @updatedAt
+  car     car?      @relation(fields: [carId], references: [id])
+  carId   Int?
+}
+
+model orders {
+  id                Int              @id @default(autoincrement())
+  inv_no            String           @unique
+  total             Decimal
+  sub_total         Decimal
+  tax               Decimal
+  created           DateTime?        @default(now())
+  updated           DateTime?        @updatedAt
+  order_details     order_details[]
+  shippingAddress   shippingAddress? @relation(fields: [shippingAddressId], references: [id])
+  shippingAddressId Int?
+}
+
+model order_details {
+  id        Int     @id @default(autoincrement())
+  inv_no    String
+  total     Decimal
+  sub_total Decimal
+  qty       Int
+
+  created DateTime? @default(now())
+  updated DateTime? @updatedAt
+
+  car   car? @relation(fields: [carId], references: [id])
+  carId Int?
+
+  orders orders? @relation(fields: [inv_no], references: [inv_no])
+}
+
+model contact {
+  id        Int       @id @default(autoincrement())
+  firstname String?
+  lastname  String?
+  subject   String?
+  message   String?
+  created   DateTime? @default(now())
+  updated   DateTime? @updatedAt
+}

@@ -18,7 +18,7 @@
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
-    "seed:status": "ts-node ./prisma/seed/seed.status.ts"
+    "seeding": "ts-node ./prisma/seed/seeding.ts"
   },
   "dependencies": {
     "@nestjs/class-validator": "^0.13.4",

@@ -40,7 +40,7 @@ export class UserController {
     @Get('cars')
     @UseGuards(JwtGuard)
     listCar(@Query('page') page:Number = 0,@Query('size') size:Number = 50){
-
+        
     }
    
 
