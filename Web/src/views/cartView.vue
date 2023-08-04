@@ -33,35 +33,22 @@
                                 <th>Price</th>
                                 <th>Quantity</th>
                             </tr>
-                            <tr>
+                     
+                            <tr v-if="store.state.cartPender">
                                 <td>
-                                    <img src="../assets/img/car_product/ferrari.png" alt="car_img">
+                                    <img :src="store.state.cartPender.imagePath" alt="car_img">
                                 </td>
-                                <td>$ 900,000</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="../assets/img/car_product/ferrari.png" alt="car_img">
-                                </td>
-                                <td>$ 900,000</td>
-                                <td>1</td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <img src="../assets/img/car_product/ferrari.png" alt="car_img">
-                                </td>
-                                <td>$ 900,000</td>
-                                <td>1</td>
+                                <td>$ {{store.state.cartPender.price}}</td>
+                                <td><input type="number" step="1" min="1" v-model="qty" @change="changeQty"></td>
                             </tr>
                         </table>
                     </div>
                     <div class="right">
-                        <div class="header_label">TOTAL : 3 ITEM</div>
+                        <div class="header_label">TOTAL : 1 ITEM</div>
                         <div class="cart_info">
                             <div class="info">
                                 <div class="label">SUBTOTAL : </div>
-                                <div class="content">$ 900,000</div>
+                                <div class="content">$ {{ (store.state.cartPender.price)*store.state.cartPender.qty }}</div>
                             </div>
                             <div class="info">
                                 <div class="label">SHIPPING FEE : </div>
@@ -69,7 +56,7 @@
                             </div>
                             <div class="info">
                                 <div class="label">TAX : </div>
-                                <div class="content">$ 2,000</div>
+                                <div class="content">$ {{ (store.state.cartPender.price * 0.1)*store.state.cartPender.qty }}</div>
                             </div>
                             <div class="info">
                                 <div class="label">Address : </div>
@@ -78,7 +65,7 @@
                         </div>
                         <div class="total">
                             <div class="label">TOTAL :</div>
-                            <div class="price">$ 903,000</div>
+                            <div class="price">$ {{ ((store.state.cartPender.price * 0.01 + 1000 ) + Number(store.state.cartPender.price))*store.state.cartPender.qty}}</div>
                         </div>
                         <RouterLink :to="`/car/cart/user/${itemId}`">Check out</RouterLink>
 
@@ -92,18 +79,24 @@
 
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import { ref, onMounted } from 'vue';
+import { ref, onMounted ,inject} from 'vue';
 import { useRoute } from 'vue-router';
 import Breadcrumb from '../component/Breadcrumb.vue';
 import defaultLayout from '../layout/default.vue'
-
-
+import store from '../store';
+const car=ref({})
 const route = useRoute();
 const itemId = ref('');
+const qty=ref()
+const router=inject('router')
+
+const changeQty=()=>{
+    store.commit('setCartQty',qty.value)
+}
 
 onMounted(() => {
     itemId.value = route.params.id;
-    
+    qty.value= store.state.cartPender.qty
 });
 </script>
 
@@ -174,6 +167,12 @@ onMounted(() => {
                         }
                         img{
                             width: 50%;
+                        }
+                        input[type="number"]{
+                            background-color: transparent;
+                            text-align: center;
+                            border: none;
+                            outline: none;
                         }
                     }
                 }

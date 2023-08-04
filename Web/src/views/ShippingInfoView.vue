@@ -85,11 +85,11 @@
                         
                     </div>
                     <div class="right">
-                        <div class="header_label">TOTAL : 3 ITEM</div>
+                        <div class="header_label">TOTAL : 1 ITEM</div>
                         <div class="cart_info">
                             <div class="info">
                                 <div class="label">SUBTOTAL : </div>
-                                <div class="content">$ 900,000</div>
+                                <div class="content">$ {{ (store.state.cartPender.price)*store.state.cartPender.qty }}</div>
                             </div>
                             <div class="info">
                                 <div class="label">SHIPPING FEE : </div>
@@ -97,7 +97,7 @@
                             </div>
                             <div class="info">
                                 <div class="label">TAX : </div>
-                                <div class="content">$ 2,000</div>
+                                <div class="content">$ {{ (store.state.cartPender.price * 0.1)*store.state.cartPender.qty }}</div>
                             </div>
                             <div class="info">
                                 <div class="label">Address : </div>
@@ -106,10 +106,10 @@
                         </div>
                         <div class="total">
                             <div class="label">TOTAL :</div>
-                            <div class="price">$ 903,000</div>
+                            <div class="price">$ {{ ((store.state.cartPender.price * 0.01 + 1000 ) + Number(store.state.cartPender.price))*store.state.cartPender.qty}}</div>
                         </div>
-                        <RouterLink to="#">Check out</RouterLink>
-                        
+
+                        <RouterLink to="/thank">Check out</RouterLink>
                     </div>
                     
                 </div>
@@ -124,7 +124,7 @@ import { ref, onMounted } from 'vue';
 import { useRoute } from 'vue-router';
 import Breadcrumb from '../component/Breadcrumb.vue';
 import defaultLayout from '../layout/default.vue'
-
+import store from '../store';
 
 const route = useRoute();
 const itemId = ref('');

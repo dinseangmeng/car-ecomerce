@@ -127,12 +127,15 @@ res=>{
 axios.get(`${process.env.API_URL}/cars`).then(
 res=>{
   car.value=res.data.cars
+  store.state.cars=car.value
+  localStorage.setItem("cars",JSON.stringify(car.value))
   if(car.value.length<=0){
     isCarEmpty.value=true
   }
   isCarLoading.value=false
 }
 )
+
 
 
 </script>

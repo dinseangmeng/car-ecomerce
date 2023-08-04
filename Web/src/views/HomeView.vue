@@ -93,6 +93,7 @@ import {ref} from "vue"
 import {RouterLink} from 'vue-router'
 import defaultLayout from '../layout/default.vue';
 import axios from 'axios'
+import store from "../store";
 const isCatLoading=ref(true)
 const isCarLoading=ref(true)
 const carCategory=ref([])
@@ -111,6 +112,8 @@ axios.get(`${process.env.API_URL}/car-type`).then(
 axios.get(`${process.env.API_URL}/cars`).then(
   res=>{
     car.value=res.data.cars
+    store.state.cars=car.value
+    localStorage.setItem("cars",JSON.stringify(car.value))
     if(car.value.length<=0){
       isCarEmpty.value=true
     }

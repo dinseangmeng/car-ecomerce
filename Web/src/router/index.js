@@ -7,6 +7,7 @@ import CarDetailView from '../views/CarDetailView.vue'
 import CartView from '../views/cartView.vue'
 import UserInfoView from '../views/UserInfoView.vue'
 import ShippingInfoView from '../views/ShippingInfoView.vue'
+import ThankYouView from '../views/ThankYouView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -50,6 +51,11 @@ const router = createRouter({
       path: '/car/cart/User/shipping/:id',
       name: 'ShippingInfoView',
       component: ShippingInfoView
+    },
+    {
+      path: '/thank',
+      name: 'thank',
+      component: ThankYouView
     },
   ],
   scrollBehavior (to, from, savedPosition) {

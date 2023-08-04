@@ -21,9 +21,9 @@
                 <div class="content">
                     <div class="left">
                         <div class="mainImg">
-                            <img src="../assets/img/car_product/ferrari.png" alt="">
+                            <img :src="car.imagePath" alt="">
                         </div>
-                        <div class="subImg">
+                        <!-- <div class="subImg">
                             <div class="img">
                                 <img src="../assets/img/car_product/ferrari.png" alt="">
                             </div>
@@ -33,10 +33,10 @@
                             <div class="img">
                                 <img src="../assets/img/car_product/ferrari.png" alt="">
                             </div>
-                        </div>
+                        </div> -->
                     </div>
-                    <div class="right">
-                        <h1>FERRARI ROMA. RS. 3.76 CAR</h1>
+                    <div class="right" v-if="car">
+                        <h1>{{ car.name }}</h1>
                         <select placeholder="CHOOSE COLOR" >
                             <option value="RED" >RED</option>
                             <option value="BLUE"  >BLUE</option>
@@ -49,10 +49,10 @@
                             <option value="all-season">All-Season Tires</option>
                             <option value="performance">Performance Tires</option>
                         </select>
-                        <input type="number" min="1" step="1" placeholder="Quantity">
+                        <input type="number" min="1" step="1"  v-model="qty" placeholder="Quantity">
                         <div class="btn">
-                            <RouterLink :to="`/car/cart/${itemId}`" class="cart">Add to cart</RouterLink>
-                            <RouterLink :to="`/car/cart/${itemId}`">Pay</RouterLink>
+             
+                            <button @click="Checkout">Pay</button>
                         </div>
                     </div>
                 </div>
@@ -188,17 +188,28 @@
 
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, inject } from 'vue';
 import { useRoute } from 'vue-router';
 import Breadcrumb from '../component/Breadcrumb.vue';
 import defaultLayout from '../layout/default.vue'
-
+import store from '../store';
 const route = useRoute();
 const itemId = ref('');
+const car=ref({})
+const qty=ref(1)
+const router=inject('router')
 
+const Checkout=()=>{
+    car.value.qty=qty
+    store.state.cartPender=car.value
+    
+    localStorage.setItem("carts",JSON.stringify(store.state.cartPender))
+    router.push(`/car/cart/${itemId.value}`)
+}
 onMounted(() => {
     itemId.value = route.params.id;
-    
+    car.value=store.getters.getCars(itemId.value)
+    // console.log(car.value);
 });
 </script>
 
@@ -315,17 +326,16 @@ onMounted(() => {
                     width: 53%;
                     display: flex;
                     justify-content: space-between;
-                    a{
+                    button{
+                        width: 100%;
                         padding: .2rem 1.2rem;
                         font-size: 1.5rem;
                         border: none;
                         outline: none;
                         border-radius: .2rem;
-                        background-color: black;
                         color: white;
-                        &.cart{
-                            background-color: rgb(0, 111, 208);
-                        }
+                        background-color: rgb(0, 111, 208);
+             
                     }
                 }
             }
